@@ -37,20 +37,26 @@ public class rotateImage : MonoBehaviour
 
     private void OnMouseDrag()
     {
+
+        Vector3 Center =  Camera.main.WorldToScreenPoint(transform.position);
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
 
-        float Angle1 = GetAngle(clickPos, mousePosition);
-        float Angle2 = CalculateAngle(clickPos, mousePosition);
+        //Debug.Log(Center.x + "," + Center.y);
 
-        transform.rotation = Quaternion.Euler(0, 0, Angle1);
+        float Angle1 = GetAngle(Center, mousePosition);  // 센터랑 마우스 현재위치 각도
+        float Angle2 = GetAngle(Center, clickPos);   //센터랑 마우스 처음위치 각도
 
-        //Debug.Log(Angle1 + " , " + Angle2);
+        float Angle3 = Angle1 - Angle2;  //뺌
+
+        transform.rotation = Quaternion.Euler(0, 0, Angle3);  //회전
+
+        Debug.Log(Angle1 + " , " + Angle2);
     }
 
     public static float GetAngle(Vector3 vStart, Vector3 vEnd) //-180~180
     {
         Vector3 v = vEnd - vStart;
-        return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+        return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;   //각도를 구해쥼
     }
 
     public static float CalculateAngle(Vector3 from, Vector3 to) //0~360
