@@ -46,7 +46,7 @@ public class rotateImage : MonoBehaviour
         float Angle1 = GetAngle(Center, mousePosition);  // 센터랑 마우스 현재위치 각도
         float Angle2 = GetAngle(Center, clickPos);   //센터랑 마우스 처음위치 각도
 
-        float Angle3 = Angle1 - Angle2;  //뺌
+        float Angle3 = Angle2 - Angle1;  //뺌
 
         transform.rotation = Quaternion.Euler(0, 0, Angle3);  //회전
 
