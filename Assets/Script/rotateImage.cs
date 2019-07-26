@@ -41,7 +41,7 @@ public class rotateImage : MonoBehaviour
         Vector3 Center =  Camera.main.WorldToScreenPoint(transform.position);
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
 
-        //Debug.Log(Center.x + "," + Center.y);
+       
 
         float Angle1 = GetAngle(Center, mousePosition);  // 센터랑 마우스 현재위치 각도
         float Angle2 = GetAngle(Center, clickPos);   //센터랑 마우스 처음위치 각도
@@ -50,7 +50,7 @@ public class rotateImage : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, Angle3);  //회전
 
-        Debug.Log(Angle1 + " , " + Angle2);
+       
     }
 
     public static float GetAngle(Vector3 vStart, Vector3 vEnd) //-180~180
